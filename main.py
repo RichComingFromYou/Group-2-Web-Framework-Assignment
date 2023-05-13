@@ -21,6 +21,7 @@ def navigation():
         
 navigation()
 
+
 # Fix image layout later
 st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
 st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
