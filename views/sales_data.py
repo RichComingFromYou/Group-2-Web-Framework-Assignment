@@ -19,3 +19,27 @@ elif cabang == "Bandung":
 
 elif cabang == "Surabaya":
     st.write("Not implemented yet")
+
+@st.cache_data(ttl=600)
+def load_data(sheets_url: str):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
+
+# terus code dibawah ini tuh buat ngeload aja, bukan buat nampilin datanya
+df = load_data(st.secrets["public_gsheets_url"])
+
+maker = []
+genmodel = []
+
+# Show the data
+for row in df.itertuples():
+    maker.append(row.Maker)
+    genmodel.append(row.Genmodel)
+    
+    # Tadi yang salah disini
+    # car = pd.DataFrame({"Maker" : maker, "Genmodel" : genmodel })
+
+# variable car hrs ny d luar loop
+car = pd.DataFrame({"Maker" : maker, "Genmodel" : genmodel })
+
+st.table(car) # setelah variable "car" ny d luar, pke st.table()
