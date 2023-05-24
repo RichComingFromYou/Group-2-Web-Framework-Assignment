@@ -8,20 +8,18 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 utl.inject_custom_css()
 utl.navbar_component()
 
-from views import about,details, sales_data
+from views import about,details,sales_data
 
 def navigation():
     route = utl.get_current_route()
     if route == "about":
         about.load_view()
-    elif route == "analysis":
+    elif route == "details":
         details.load_view()
-    elif route == "options":
+    elif route == "sales data":
         sales_data.load_view()
+    else:
+        st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
+        st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
         
 navigation()
-
-
-# Fix image layout later
-st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
-st.image("https://www.kimballstock.com/images/car-stock-photos/cutout-car-images.jpg")
