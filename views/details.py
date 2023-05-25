@@ -30,12 +30,3 @@ def load_view():
     selectedMaker = st.selectbox("Filter by Maker:", makers)
     table = df[df['Maker'] == selectedMaker]
     st.table(table)
-
-    table = table.drop(['Maker', 'Genmodel_ID'], axis = 1)
-
-    table = table.T 
-    header_row = table.iloc[0]
-    table.columns = header_row
-    table = table.drop(['Genmodel'], axis = 0)
-
-    st.line_chart(table)
