@@ -6,11 +6,16 @@ def load_view():
     st.title('About Page')
 
     st.header("Company History")
-    st.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis tortor sed mi ultricies ultricies. In hac habitasse platea dictumst. Integer luctus ornare consequat. Pellentesque vitae sollicitudin sapien. In vestibulum, dolor nec ullamcorper malesuada, leo tortor viverra nulla, tincidunt interdum magna nisi non lorem. Pellentesque ullamcorper sed tellus eu interdum. Integer nec facilisis velit. Suspendisse vitae orci molestie, finibus enim in, porttitor nisi. Duis eget venenatis elit, ut faucibus lectus. Pellentesque ut massa sagittis, viverra quam non, luctus est. Nunc rhoncus, turpis eget feugiat dictum, nisl est condimentum ipsum, sit amet auctor quam ex in dolor. Duis odio erat, hendrerit at mi efficitur, dignissim accumsan urna.")
+    st.write("Apollo's Wheel originated from 4 young adults who dreamed of having their own start up company. The name 'Apollo's wheel' originated from the Greek God's himself Apollo, while the 'wheel' is referring to his famous chariot where he rode through the sky every day to bring light to the world.  \n  \nOur enthusiastic passion about cars drives us to make it more accessible for everyone to access any information regarding cars. whether physically, emotionally, or mentally, our desire to share our passion will never cease to end.")
 
     st.header("Company Motto")
+    st.write("Bringing You The Most Accurate Information There Is")
+
     st.header("Company Founder")
+    st.write("Vincent George Chandra  \nTimmothy James Wijaya  \nVannes Cristian  \nKerich")
+
     st.header("Website Developer")
+    st.write("Kelompok 2")
 
     st.header("Contact")
     st.write("No. Handphone: 087777420727")
