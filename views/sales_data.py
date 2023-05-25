@@ -28,18 +28,22 @@ def load_view():
     # terus code dibawah ini tuh buat ngeload aja, bukan buat nampilin datanya
     df = load_data(st.secrets["sales_table"])
 
-    maker = []
-    genmodel = []
-
-    # Show the data
+    makers = []
     for row in df.itertuples():
-        maker.append(row.Maker)
-        genmodel.append(row.Genmodel)
-        
-        # Tadi yang salah disini
-        # car = pd.DataFrame({"Maker" : maker, "Genmodel" : genmodel })
+        if(not makers.__contains__(row.Maker)):
+            makers.append(row.Maker)
 
-    # variable car hrs ny d luar loop
-    car = pd.DataFrame({"Maker" : maker, "Genmodel" : genmodel })
+    selectedMaker = st.selectbox("Filter by Maker:", makers)
+    table = df[df['Maker'] == selectedMaker]
+    st.table(table)
 
-    st.table(car) # setelah variable "car" ny d luar, pke st.table()
+    # Remove Maker and Genmodel ID from table
+    table = table.drop(['Maker', 'Genmodel_ID'], axis = 1)
+
+    # Transpose Column to row and row to column
+    table = table.T 
+    header_row = table.iloc[0]
+    table.columns = header_row
+    table = table.drop(['Genmodel'], axis = 0)
+
+    st.line_chart(table)

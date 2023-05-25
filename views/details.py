@@ -22,18 +22,20 @@ def load_view():
     # terus code dibawah ini tuh buat ngeload aja, bukan buat nampilin datanya
     df = load_data(st.secrets["price_table"])
 
-    maker = []
-    genmodel = []
-    year = []
-    Entry_price = []
-
-    # Show the data
+    makers = []
     for row in df.itertuples():
-        maker.append(row.Maker)
-        genmodel.append(row.Genmodel)
-        year.append(row.Year)
-        Entry_price.append(row.Entry_price)
+        if(not makers.__contains__(row.Maker)):
+            makers.append(row.Maker)
+    
+    selectedMaker = st.selectbox("Filter by Maker:", makers)
+    table = df[df['Maker'] == selectedMaker]
+    st.table(table)
 
-    price = pd.DataFrame({"Maker" : maker, "Genmodel" : genmodel, "Year" : year, "Entry Price" : Entry_price})
+    table = table.drop(['Maker', 'Genmodel_ID'], axis = 1)
 
-    st.table(price) # setelah variable "price" ny d luar, pke st.table()
+    table = table.T 
+    header_row = table.iloc[0]
+    table.columns = header_row
+    table = table.drop(['Genmodel'], axis = 0)
+
+    st.line_chart(table)
